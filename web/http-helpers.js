@@ -16,3 +16,24 @@ exports.serveAssets = function(res, asset) {
 };
 
 // As you progress, keep thinking about what helper functions you can put here!
+
+exports.sendResponse = function(response, data, status){
+  status = status || 200;
+  response.writeHead(status, headers);
+  response.end(data);
+};
+
+exports.send404 = function(response){
+  exports.sendResponse(response, null, 404);
+};
+
+exports.collectData = function(request, callback){
+  var data = "";
+  request.on('data', function(partial){
+    data += partial;
+  });
+  request.on('end', function(){
+    // var message = JSON.parse(data);
+    callback(data); // changed message => data
+  });
+};
