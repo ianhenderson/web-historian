@@ -17,6 +17,7 @@ exports.serveAssets = function(res, asset) {
 
 // As you progress, keep thinking about what helper functions you can put here!
 
+// Following util functions are from Fred's node.js solution lecture
 exports.sendResponse = function(response, data, status){
   status = status || 200;
   response.writeHead(status, headers);
